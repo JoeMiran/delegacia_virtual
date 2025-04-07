@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Solicitar Perícia{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Solicitar Perícia para Ocorrência #{{ ocorrencia.id }}</h2>
+    
+    <div class="ocorrencia-info">
+        <h3>Detalhes da Ocorrência</h3>
+        <p>{{ ocorrencia.descricao }}</p>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="data_pericia">Data da Perícia:</label>
+            <input type="date" id="data_pericia" name="data_pericia" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="descricao">Descrição da Perícia:</label>
+            <textarea id="descricao" name="descricao" class="form-control" rows="5" required></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <input type="submit" value="Solicitar Perícia" class="btn btn-primary">
+            <a href="{{ url_for('listar_ocorrencias') }}" class="btn">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .ocorrencia-info {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-left: 4px solid #3498db;
+    }
+    
+    .ocorrencia-info h3 {
+        margin-top: 0;
+        color: #2c3e50;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}

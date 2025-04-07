@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Avaliar Investigação{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Avaliar Investigação #{{ investigation.id }}</h2>
+    
+    <div class="investigacao-details">
+        <div class="detail-group">
+            <h3>Detalhes da Ocorrência</h3>
+            <p>{{ investigation.ocorrencia.descricao }}</p>
+        </div>
+        
+        <div class="detail-group">
+            <h3>Suspeito</h3>
+            <p>{{ investigation.suspeito }}</p>
+        </div>
+        
+        <div class="detail-group">
+            <h3>Evidências</h3>
+            <p>{{ investigation.evidencias }}</p>
+        </div>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="decisao">Decisão:</label>
+            <select id="decisao" name="decisao" class="form-control" required>
+                <option value="" disabled selected>Selecione uma decisão</option>
+                <option value="Ordenar prisão">Ordenar prisão</option>
+                <option value="Provas insuficientes, continue investigando">Provas insuficientes, continue investigando</option>
+                <option value="Suspeito inocente">Suspeito inocente</option>
+            </select>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-gavel"></i> Registrar Decisão
+            </button>
+            <a href="{{ url_for('listar_investigacoes') }}" class="btn">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .investigacao-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        border-left: 4px solid #3498db;
+    }
+    
+    .detail-group {
+        margin-bottom: 20px;
+    }
+    
+    .detail-group:last-child {
+        margin-bottom: 0;
+    }
+    
+    .detail-group h3 {
+        margin-top: 0;
+        color: #2c3e50;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+    
+    .detail-group p {
+        margin: 10px 0 0 0;
+        color: #555;
+        white-space: pre-line;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+    }
+    
+    select.form-control {
+        height: 45px;
+        font-size: 16px;
+    }
+    
+    @media (max-width: 768px) {
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}

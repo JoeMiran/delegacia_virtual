@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Ocorrências para Investigar{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Ocorrências para Investigar</h2>
+    
+    {% if novas %}
+    <div class="ocorrencias-list">
+        {% for o in novas %}
+        <div class="list-item">
+            <h3>Ocorrência #{{ o.id }}</h3>
+            <p>{{ o.descricao }}</p>
+            <div class="action-buttons">
+                <a href="{{ url_for('investigar_ocorrencia', ocorrencia_id=o.id) }}" class="btn btn-primary">Investigar</a>
+                <a href="{{ url_for('solicitar_pericia', ocorrencia_id=o.id) }}" class="btn">Solicitar Perícia</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Não há ocorrências novas para investigar.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+</div>
+
+<style>
+    .action-buttons {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+    }
+    
+    .list-item {
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .list-item h3 {
+        margin-top: 0;
+        color: #2c3e50;
+    }
+</style>
+{% endblock %}

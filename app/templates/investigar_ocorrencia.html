@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Investigar Ocorrência #{{ ocorrencia.id }}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="ocorrencia-header">
+        <h2>Investigar Ocorrência #{{ ocorrencia.id }}</h2>
+        <span class="badge badge-status">{{ ocorrencia.status }}</span>
+    </div>
+    
+    <div class="ocorrencia-details">
+        <h3>Descrição da Ocorrência</h3>
+        <p>{{ ocorrencia.descricao }}</p>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="suspeito">Suspeito:</label>
+            <input type="text" id="suspeito" name="suspeito" class="form-control" required
+                   placeholder="Nome completo do suspeito">
+        </div>
+        
+        <div class="form-group">
+            <label for="evidencias">Evidências Encontradas:</label>
+            <textarea id="evidencias" name="evidencias" class="form-control" rows="6" required
+                      placeholder="Descreva detalhadamente as evidências coletadas..."></textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Registrar Investigação
+            </button>
+            <a href="{{ url_for('listar_ocorrencias') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Cancelar
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .ocorrencia-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .ocorrencia-details {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 25px;
+    }
+    
+    .ocorrencia-details h3 {
+        margin-top: 0;
+        color: #2c3e50;
+    }
+    
+    .badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        font-weight: bold;
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 25px;
+    }
+    
+    @media (max-width: 768px) {
+        .ocorrencia-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .badge {
+            margin-top: 10px;
+        }
+        
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock %}

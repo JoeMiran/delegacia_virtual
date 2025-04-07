@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Investigações para Avaliação{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Investigações para Avaliação</h2>
+    
+    {% if pendentes %}
+    <div class="investigacoes-list">
+        {% for inv in pendentes %}
+        <div class="investigacao-item">
+            <div class="investigacao-header">
+                <h3>Investigação #{{ inv.id }}</h3>
+                <span class="badge badge-pendente">Pendente</span>
+            </div>
+            
+            <div class="investigacao-body">
+                <p><strong>Ocorrência:</strong> #{{ inv.ocorrencia.id }}</p>
+                <p><strong>Suspeito:</strong> {{ inv.suspeito }}</p>
+                <p><strong>Evidências:</strong> {{ inv.evidencias|truncate(100) }}</p>
+            </div>
+            
+            <div class="investigacao-actions">
+                <a href="{{ url_for('avaliar_investigacao', investigation_id=inv.id) }}" class="btn btn-primary">
+                    Avaliar Investigação
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        Nenhuma investigação pendente para avaliação.
+    </div>
+    {% endif %}
+    
+    <div class="back-link">
+        <a href="{{ url_for('dashboard') }}" class="btn">
+            <i class="fas fa-arrow-left"></i> Voltar ao Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+    .investigacoes-list {
+        margin-top: 20px;
+    }
+    
+    .investigacao-item {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .investigacao-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    
+    .investigacao-header h3 {
+        margin: 0;
+        color: #2c3e50;
+    }
+    
+    .badge {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    
+    .badge-pendente {
+        background-color: #f39c12;
+        color: white;
+    }
+    
+    .investigacao-body p {
+        margin: 8px 0;
+        color: #555;
+    }
+    
+    .investigacao-actions {
+        margin-top: 15px;
+        text-align: right;
+    }
+    
+    .back-link {
+        margin-top: 30px;
+    }
+    
+    .alert-info {
+        background-color: #d9edf7;
+        color: #31708f;
+        padding: 15px;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}

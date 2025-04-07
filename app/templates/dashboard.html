@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h2>Dashboard {{ user.role|capitalize }}</h2>
+    <div class="list-container">
+        <ul>
+            {% if user.role == "vitima" %}
+                <li><a href="{{ url_for('registrar_ocorrencia') }}" class="btn">Registrar Ocorrência</a></li>
+                <li><a href="{{ url_for('acompanhar_ocorrencias') }}" class="btn">Acompanhar Investigações</a></li>
+            {% elif user.role == "investigador" %}
+                <li><a href="{{ url_for('listar_ocorrencias') }}" class="btn">Listar Ocorrências (Status: Nova)</a></li>
+            {% elif user.role == "delegado" %}
+                <li><a href="{{ url_for('listar_investigacoes') }}" class="btn">Listar Investigações para Avaliação</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a></li>
+        </ul>
+    </div>
+{% endblock %}

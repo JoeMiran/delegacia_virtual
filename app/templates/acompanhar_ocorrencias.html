@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Minhas Ocorrências{% endblock %}
+
+{% block content %}
+<div class="list-container">
+    <h2>Minhas Ocorrências</h2>
+    
+    {% if ocorrencias %}
+    <div class="ocorrencias-list">
+        {% for o in ocorrencias %}
+        <div class="list-item">
+            <h3>Ocorrência #{{ o.id }}</h3>
+            <p><strong>Descrição:</strong> {{ o.descricao }}</p>
+            <p><strong>Status:</strong> <span class="status-badge status-{{ o.status|lower }}">{{ o.status }}</span></p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>Nenhuma ocorrência registrada.</p>
+    {% endif %}
+    
+    <a href="{{ url_for('dashboard') }}" class="btn">Voltar ao Dashboard</a>
+</div>
+
+<style>
+    .status-badge {
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 0.9em;
+        color: white;
+    }
+    
+    .status-nova {
+        background-color: #3498db;
+    }
+    
+    .status-em_andamento {
+        background-color: #f39c12;
+    }
+    
+    .status-concluida {
+        background-color: #2ecc71;
+    }
+    
+    .ocorrencias-list {
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
