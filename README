@@ -1,0 +1,80 @@
+# Sistema de Gerenciamento de Ocorrências
+
+Este é um sistema simples para gerenciamento de ocorrências policiais, desenvolvido com **Flask**. Ele permite que diferentes tipos de usuários (vítimas, investigadores e delegados) realizem ações específicas, como registrar ocorrências, investigar casos e avaliar investigações.
+
+## Funcionalidades
+
+- **Login e Logout**: Sistema de autenticação para diferentes tipos de usuários.
+- **Vítima**:
+  - Registrar novas ocorrências.
+  - Acompanhar o status de suas ocorrências.
+- **Investigador**:
+  - Listar ocorrências pendentes.
+  - Investigar ocorrências, adicionando suspeitos e evidências.
+  - Solicitar perícias para ocorrências.
+- **Delegado**:
+  - Listar investigações pendentes.
+  - Avaliar investigações e tomar decisões finais.
+- **Administração de Sessões**: Cada usuário tem permissões específicas baseadas em seu papel.
+
+## Tecnologias Utilizadas
+
+- **Python 3.x**
+- **Flask**: Framework web para desenvolvimento do backend.
+
+## Como Rodar o Sistema no Seu Computador
+
+1. **Clone o Repositório ou Baixe o ZIP**
+   Clone o repositório:
+     ```bash
+     git clone https://github.com/seu-usuario/seu-repositorio.git
+     cd seu-repositorio
+     ```
+   Ou baixe o arquivo ZIP do repositório e extraia em uma pasta local.
+
+2. **Instale as Dependências**
+   No terminal, execute:
+   ```bash
+   pip install flask
+
+3. **Inicie o Sistema** ainda no terminal, execute
+   ```bash
+   python run.py
+
+4. **Para acessar** clique no endereço que apareceu no terminal:
+   ```bash
+    http://127.0.0.1:5000
+
+## Fluxo do Sistema
+
+1. **Login**:
+   - O usuário faz login com seu nome de usuário e senha.
+   - Dependendo do tipo de usuário, ele será redirecionado para o painel correspondente.
+
+2. **Painel do Usuário**:
+   **Vítima**:
+    - Pode registrar novas ocorrências.
+    - Pode acompanhar o status de suas ocorrências registradas.
+   **Investigador**:
+    - Lista ocorrências pendentes.
+    - Pode investigar uma ocorrência, adicionando suspeitos e evidências.
+    - Pode solicitar perícias para ocorrências.
+   **Delegado**:
+    - Lista investigações pendentes.
+    - Avalia investigações e toma decisões finais.
+
+3. **Registro de Ocorrências**:
+   - A vítima preenche um formulário com os detalhes da ocorrência.
+   - A ocorrência é registrada no sistema e fica disponível para análise.
+
+4. **Investigação**:
+   - O investigador acessa as ocorrências pendentes.
+   - Adiciona informações relevantes, como suspeitos e evidências.
+   - Pode solicitar perícias, se necessário.
+
+5. **Avaliação**:
+   - O delegado analisa as investigações realizadas.
+   - Toma decisões finais sobre as ocorrências, encerrando ou encaminhando para outras ações.
+
+6. **Logout**:
+   - O usuário pode sair do sistema a qualquer momento, encerrando sua sessão.
