@@ -4,22 +4,28 @@ Este é um sistema simples para gerenciamento de ocorrências policiais, desenvo
 
 ## Funcionalidades
 
-- **Login e Logout**: Sistema de autenticação para diferentes tipos de usuários.
+- **Login e Logout**: Sistema de autenticação para diferentes tipos de usuários. 
 - **Vítima**:
+  - **Username**: vitima
+  - **Senha:** pass
   - Registrar novas ocorrências.
   - Acompanhar o status de suas ocorrências.
 - **Investigador**:
+  - **Username**: investigador
+  - **Senha:** pass
   - Listar ocorrências pendentes.
   - Investigar ocorrências, adicionando suspeitos e evidências.
   - Solicitar perícias para ocorrências.
 - **Delegado**:
+  - **Username**: delegado
+  - **Senha:** pass
   - Listar investigações pendentes.
   - Avaliar investigações e tomar decisões finais.
 - **Administração de Sessões**: Cada usuário tem permissões específicas baseadas em seu papel.
 
 ## Tecnologias Utilizadas
 
-- **Python 3.x**
+- **Python**
 - **Flask**: Framework web para desenvolvimento do backend.
 
 ## Como Rodar o Sistema no Seu Computador
